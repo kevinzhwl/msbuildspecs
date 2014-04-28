@@ -37,15 +37,18 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <Framework35Version Condition="'$(UseEnv)' != 'true'">v3.5</Framework35Version>
 -->
 
-    <VSInstallDir>D:\msvc\visualstudio\msvs9.0\</VSInstallDir>
+    <VSInstallDir>$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Baidu@vc9dir)</VSInstallDir>
+    <VSInstallDir Condition="'$(VSInstallDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Baidu@vc9dir) </VSInstallDir>
     <VCInstallDir>$(VSInstallDir)VC\</VCInstallDir>
 	
+    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
+    <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
+
     <FrameworkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework@InstallRoot)</FrameworkDir>
     <FrameworkVersion Condition="'$(UseEnv)' != 'true'">v2.0.50727</FrameworkVersion>
     <Framework35Version Condition="'$(UseEnv)' != 'true'">v3.5</Framework35Version>
 
-    <FrameworkSdkDir Condition="'$(UseEnv)' != 'true'">$(VCInstallDir)PlatformSDK\</FrameworkSdkDir>
-    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(FrameworkSdkDir)</WindowsSdkDir>
+    <FrameworkSdkDir Condition="'$(UseEnv)' != 'true'">$(FrameworkDir)</FrameworkSdkDir>
 
     <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(VCInstallDir)bin\x86_amd64;$(VCInstallDir)bin;$(WindowsSdkDir)bin;$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(FrameworkSDKDir)bin;$(FrameworkSDKDir)lib\win64;$(FrameworkDir)$(FrameworkVersion);$(FxCopDir);$(PATH);</ExecutablePath>
     <IncludePath Condition="'$(IncludePath)' == ''">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)include;</IncludePath>
