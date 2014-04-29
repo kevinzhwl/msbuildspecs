@@ -37,14 +37,17 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <Framework35Version Condition="'$(UseEnv)' != 'true'">v3.5</Framework35Version>
 -->
 
-    <VSInstallDir>$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Baidu@vc9dir)</VSInstallDir>
-    <VSInstallDir Condition="'$(VSInstallDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Baidu@vc9dir) </VSInstallDir>
-    <VCInstallDir>$(VSInstallDir)VC\</VCInstallDir>
+    <VSInstallDir>$(Registry:HKEY_CURRENT_USER\SOFTWARE\Bnxsoft\NativeTargets\VisualStudio\9.0@VSProductDir)</VSInstallDir>
+    <VSInstallDir Condition="'$(VSInstallDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Bnxsoft\NativeTargets\VisualStudio\9.0@VSProductDir) </VSInstallDir>
+    
+    <VCInstallDir>$(Registry:HKEY_CURRENT_USER\SOFTWARE\Bnxsoft\NativeTargets\VisualStudio\9.0@VCProductDir)</VCInstallDir>
+    <VCInstallDir Condition="'$(VCInstallDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Bnxsoft\NativeTargets\VisualStudio\9.0@VCProductDir) </VCInstallDir>
+	<VCInstallDir Condition="'$(VCInstallDir)' == ''">$(VSInstallDir)VC\</VCInstallDir>
 	
-    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
-    <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
+    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
+    <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
 
-    <FrameworkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework@InstallRoot)</FrameworkDir>
+    <FrameworkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Microsoft\.NETFramework@InstallRoot)</FrameworkDir>
     <FrameworkVersion Condition="'$(UseEnv)' != 'true'">v2.0.50727</FrameworkVersion>
     <Framework35Version Condition="'$(UseEnv)' != 'true'">v3.5</Framework35Version>
 

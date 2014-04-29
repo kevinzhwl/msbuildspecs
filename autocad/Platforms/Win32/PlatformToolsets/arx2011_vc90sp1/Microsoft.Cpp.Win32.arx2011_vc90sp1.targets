@@ -1,6 +1,6 @@
 ﻿<!--
 ***********************************************************************************************
-Microsoft.Cpp.Win32.vs2008sp1_arx2010_arx2011.targets
+Microsoft.Cpp.Win32.arx2011_vc90sp1.targets
 
 WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
           created a backup copy.  Incorrect changes to this file will make it
@@ -14,7 +14,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 -->
 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\vs2008sp1_arx2010_arx2011\ImportBefore\*.targets" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\vs2008sp1_arx2010_arx2011\ImportBefore')" />
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2011_vc90sp1\ImportBefore\*.targets" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2011_vc90sp1\ImportBefore')" />
 
   <UsingTask TaskName="VCMessage" AssemblyName="Microsoft.Build.CppTasks.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 
@@ -35,5 +35,5 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <VCMessage Condition="'$(VCInstallDir)'!='' and !Exists('$(VCInstallDir)bin')" Code="MSB8014" Type="Error" Arguments="$(VCInstallDir)bin\" />
   </Target>
 
-  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\vs2008sp1_arx2010_arx2011\ImportAfter\*.targets" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\vs2008sp1_arx2010_arx2011\ImportAfter')" />
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2011_vc90sp1\ImportAfter\*.targets" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2011_vc90sp1\ImportAfter')" />
 </Project>

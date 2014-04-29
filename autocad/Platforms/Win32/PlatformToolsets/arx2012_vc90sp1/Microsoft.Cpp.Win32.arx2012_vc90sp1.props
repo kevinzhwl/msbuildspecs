@@ -16,16 +16,22 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   <PropertyGroup>
     <PlatformToolsetVersion>90</PlatformToolsetVersion>
 
-    <FrameworkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework@InstallRoot)</FrameworkDir>
+    <VSInstallDir>$(Registry:HKEY_CURRENT_USER\SOFTWARE\Bnxsoft\NativeTargets\VisualStudio\9.0@VSProductDir)</VSInstallDir>
+    <VSInstallDir Condition="'$(VSInstallDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Bnxsoft\NativeTargets\VisualStudio\9.0@VSProductDir) </VSInstallDir>
+    
+    <VCInstallDir>$(Registry:HKEY_CURRENT_USER\SOFTWARE\Bnxsoft\NativeTargets\VisualStudio\9.0@VCProductDir)</VCInstallDir>
+    <VCInstallDir Condition="'$(VCInstallDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Bnxsoft\NativeTargets\VisualStudio\9.0@VCProductDir) </VCInstallDir>
+	<VCInstallDir Condition="'$(VCInstallDir)' == ''">$(VSInstallDir)VC\</VCInstallDir>
+	
+    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
+    <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
+
+    <FrameworkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Microsoft\.NETFramework@InstallRoot)</FrameworkDir>
     <FrameworkVersion Condition="'$(UseEnv)' != 'true'">v2.0.50727</FrameworkVersion>
     <Framework35Version Condition="'$(UseEnv)' != 'true'">v3.5</Framework35Version>
-<!--
-    <VSInstallDir>$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\Setup\VS@ProductDir)</VSInstallDir>
--->
-    <VSInstallDir>D:\msvc\visualstudio\msvs9.0\</VSInstallDir>
-    <VCInstallDir>$(VSInstallDir)VC\</VCInstallDir>
-    <FrameworkSdkDir Condition="'$(UseEnv)' != 'true'">$(VCInstallDir)PlatformSDK\</FrameworkSdkDir>
-    <WindowsSdkDir Condition="'$(UseEnv)' != 'true'">$(FrameworkSdkDir)</WindowsSdkDir>
+
+    <FrameworkSdkDir Condition="'$(UseEnv)' != 'true'">$(FrameworkDir)</FrameworkSdkDir>
+
 
     <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(VCInstallDir)bin;$(WindowsSDKDir)bin;$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(ProgramFiles)\HTML Help Workshop;$(FrameworkSDKDir)bin;$(FrameworkDir)$(FrameworkVersion);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
     <IncludePath Condition="'$(IncludePath)' == ''">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)include;</IncludePath>
