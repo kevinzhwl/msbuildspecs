@@ -1,6 +1,6 @@
 ﻿<!--
 ***********************************************************************************************
-Microsoft.Cpp.Win32.arx2008_vc80.props
+Microsoft.Cpp.Win32.arx2006_vc71.props
 
 WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
           created a backup copy.  Incorrect changes to this file will make it
@@ -11,10 +11,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 -->
 
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2008_vc80\ImportBefore\*.props" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2008_vc80\ImportBefore')" />
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2006_vc71\ImportBefore\*.props" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2006_vc71\ImportBefore')" />
 
   <PropertyGroup>
-    <PlatformToolsetVersion>80</PlatformToolsetVersion>
+    <PlatformToolsetVersion>71</PlatformToolsetVersion>
 
     <VSInstallDir>$(Registry:HKEY_CURRENT_USER\SOFTWARE\Bnxsoft\NativeTargets\VisualStudio\8.0@VSProductDir)</VSInstallDir>
     <VSInstallDir Condition="'$(VSInstallDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Bnxsoft\NativeTargets\VisualStudio\8.0@VSProductDir) </VSInstallDir>
@@ -28,20 +28,19 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows@CurrentInstallFolder)</WindowsSdkDir>
 
     <FrameworkDir Condition="'$(UseEnv)' != 'true'">$(Registry:HKEY_CURRENT_USER\SOFTWARE\Microsoft\.NETFramework@InstallRoot)</FrameworkDir>
-    <FrameworkVersion Condition="'$(UseEnv)' != 'true'">v2.0.50727</FrameworkVersion>
-    <Framework35Version Condition="'$(UseEnv)' != 'true'">v3.5</Framework35Version>
+    <FrameworkVersion  Condition="'$(UseEnv)' != 'true'">v1.1.4322.573</FrameworkVersion>
 
     <FrameworkSdkDir Condition="'$(UseEnv)' != 'true'">$(FrameworkDir)</FrameworkSdkDir>
 
-    <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(VCInstallDir)bin;$(WindowsSDKDir)bin;$(ProgramFiles)\HTML Help Workshop;$(FrameworkSDKDir)bin;$(FrameworkDir)$(FrameworkVersion);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
-    <IncludePath Condition="'$(IncludePath)' == ''">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)include;</IncludePath>
-    <ReferencePath Condition="'$(ReferencePath)' == ''">$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib</ReferencePath>
-    <LibraryPath Condition="'$(LibraryPath)' == ''">$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)lib</LibraryPath>
-    <SourcePath Condition="'$(SourcePath)' == ''">$(VCInstallDir)atlmfc\src\mfc;$(VCInstallDir)atlmfc\src\mfcm;$(VCInstallDir)atlmfc\src\atl;$(VCInstallDir)crt\src;</SourcePath>
-    <ExcludePath Condition="'$(ExcludePath)' == ''">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)include;$(FrameworkDir)$(FrameworkVersion);$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib;</ExcludePath>
+    
+    <ExecutablePath Condition="'$(ExecutablePath)' == ''">$(VCInstallDir)bin;$(VCInstallDir)PlatformSDK\bin;$(VCInstallDir)PlatformSDK\common\bin;$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(FrameworkSDKDir)bin;$(FrameworkDir)$(FrameworkVersion);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
+    <IncludePath Condition="'$(IncludePath)' == ''">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;$(FrameworkSDKDir)include;</IncludePath>
+    <ReferencePath Condition="'$(ReferencePath)' == ''">$(FrameworkDir)$(FrameworkVersion);$(VCInstallDir)atlmfc\lib;</ReferencePath>
+    <LibraryPath Condition="'$(LibraryPath)' == ''">$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(VCInstallDir)atlmfc\lib\i386;$(VCInstallDir)PlatformSDK\lib;$(VCInstallDir)PlatformSDK\common\lib;$(FrameworkSDKDir)lib;$(VSInstallDir);$(VSInstallDir)lib;</LibraryPath>
+    <SourcePath Condition="'$(SourcePath)' == ''">$(VCInstallDir)atlmfc\src\mfc;$(VCInstallDir)atlmfc\src\atl;$(VCInstallDir)crt\src;</SourcePath>
+    <ExcludePath Condition="'$(ExcludePath)' == ''">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;$(FrameworkSDKDir)include;$(FrameworkDir)$(FrameworkVersion);$(VCInstallDir)atlmfc\lib;</ExcludePath>
     <NativeExecutablePath Condition="'$(NativeExecutablePath)' == ''">$(ExecutablePath)</NativeExecutablePath>
-
   </PropertyGroup>
 
-  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2008_vc80\ImportAfter\*.props" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2008_vc80\ImportAfter')" />
+  <Import Project="$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2006_vc71\ImportAfter\*.props" Condition="Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\arx2006_vc71\ImportAfter')" />
 </Project>
