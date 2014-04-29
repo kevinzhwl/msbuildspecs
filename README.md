@@ -7,7 +7,7 @@ msbuildspecs
 
 * msvc2010 默认配置
 * Daffodil.ENU 包括 vc60,vc70,vc71,vc80 配置
-* autocad 为AutoCAD/ObjectARX开发准备的配置文件
+* autocad 为AutoCAD/ObjectARX开发订制的配置文件
 
 开发/测试环境
 -------------
