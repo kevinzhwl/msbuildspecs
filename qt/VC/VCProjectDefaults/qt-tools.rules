@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStudioToolFile
+	Name="Qt Tools"
+	Version="8,00"
+	>
+	<Rules>
+		<CustomBuildRule
+			Name="MOC"
+			DisplayName="Qt Meta-Object Compiler"
+			CommandLine="moc.exe [AllOptions] [AdditionalOptions] [Inputs]"
+			Outputs="&quot;[$OutputFile]&quot;"
+			AdditionalDependencies="moc.exe"
+			FileExtensions="*.moc;*.moc.h;*.hxx"
+			ExecutionDescription="Moc&apos;ing $(InputFileName)..."
+			>
+			<Properties>
+				<StringProperty
+					Name="OutputFile"
+					DisplayName="Output file"
+					Category="Output"
+					Description="Write output to file rather than to standard output."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-o[value]"
+					DefaultValue="moc_$(InputName).cpp"
+					Delimited="true"
+				/>
+				<BooleanProperty
+					Name="NoWarnings"
+					DisplayName="Suppress warnings"
+					Category="Output"
+					Description="Do not generate any warnings. (Not recommended.)"
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-nw"
+				/>
+				<StringProperty
+					Name="IncludeDirs"
+					DisplayName="Include directories"
+					Category="Paths"
+					PropertyPageName="Input"
+					Description="Add dir to the include path for header files."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-I[value]"
+					Delimited="true"
+					Inheritable="true"
+				/>
+				<StringProperty
+					Name="PathPrefix"
+					DisplayName="Path prefix"
+					Category="Paths"
+					PropertyPageName="Input"
+					Description="Path prefix for the included file. Makes the moc prepend &lt;path&gt;/ to the file name in the generated #include statement."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-p[value]"
+					Delimited="true"
+					Inheritable="true"
+				/>
+				<BooleanProperty
+					Name="NoKeywords"
+					DisplayName="Disable Qt keywords"
+					Category="Definitions"
+					PropertyPageName="Input"
+					Description="Tells Qt not to define the moc keywords &quot;signals&quot;, &quot;slots&quot;, and &quot;emit&quot;, because these names will be used by a 3rd party library, e.g. Boost."
+					HelpURL="http://doc.trolltech.com/4.6/signalsandslots.html#using-qt-with-3rd-party-signals-and-slots"
+					Switch="-DNO_QT_KEYWORDS"
+				/>
+				<StringProperty
+					Name="DefineMacro"
+					DisplayName="Add defines"
+					Category="Definitions"
+					PropertyPageName="Input"
+					Description="Define macro, with optional definition."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-D[value]"
+					Delimited="true"
+					Delimiters=" "
+					Inheritable="true"
+				/>
+				<StringProperty
+					Name="UndefMacro"
+					DisplayName="Remove defines"
+					Category="Definitions"
+					PropertyPageName="Input"
+					Description="Undefine macro."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-U[value]"
+					Delimited="true"
+					Delimiters=" "
+					Inheritable="true"
+				/>
+				<StringProperty
+					Name="AddOptions"
+					DisplayName="Additional Options"
+					PropertyPageName="Input"
+					Description="Read additional command-line options from &lt;file&gt;. Each line of the file is treated as a single option. Empty lines are ignored. Note that this option is not supported within the options file itself (i.e. an options file can&apos;t &quot;include&quot; another file)."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="@[value]"
+				/>
+				<BooleanProperty
+					Name="DontInclude"
+					DisplayName="Don&apos;t generate #include"
+					Category="Includes"
+					PropertyPageName="Code Generation"
+					Description="Do not generate an #include statement in the output. This may be used to run the moc on on a C++ file containing one or more class declarations. You should then #include the meta-object code in the .cpp file."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-i"
+				/>
+				<StringProperty
+					Name="ForceInclude"
+					DisplayName="Force include"
+					Category="Includes"
+					PropertyPageName="Code Generation"
+					Description="Force the generation of an #include statement in the output. This is the default for header files whose extension starts with H or h. This option is useful if you have header files that do not follow the standard naming conventions. The &lt;file&gt; part is optional."
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-f[value]"
+				/>
+				<BooleanProperty
+					Name="PreprocessOnly"
+					DisplayName="Preprocess only"
+					PropertyPageName="Code Generation"
+					Description="Do not generate meta objects code"
+					HelpURL="http://doc.qt.nokia.com/latest/moc.html#command-line-options"
+					Switch="-E"
+				/>
+			</Properties>
+		</CustomBuildRule>
+		<CustomBuildRule
+			Name="UIC"
+			DisplayName="Qt User Interface Compiler"
+			CommandLine="uic.exe [AllOptions] [AdditionalOptions] [Inputs]"
+			Outputs="&quot;[$OutputFile]&quot;"
+			AdditionalDependencies="uic.exe"
+			FileExtensions="*.ui"
+			ExecutionDescription="Uic&apos;ing $(InputFileName)..."
+			>
+			<Properties>
+				<StringProperty
+					Name="OutputFile"
+					DisplayName="Output File"
+					Category="Output"
+					Description="Write output to &lt;file&gt; instead of to standard output."
+					HelpURL="http://doc.qt.nokia.com/latest/uic.html#options"
+					Switch="-o [value]"
+					DefaultValue="ui_$(InputName).h"
+				/>
+				<BooleanProperty
+					Name="DontGenerateGuards"
+					DisplayName="Allow multiple inclusion"
+					Description="Don&apos;t generate guards against multiple inclusion (#ifndef FOO_H ...)."
+					HelpURL="http://doc.qt.nokia.com/latest/uic.html#options"
+					Switch="-p"
+				/>
+				<StringProperty
+					Name="TranslateFunc"
+					DisplayName="Custom translation function"
+					Description="Use &lt;func&gt; for translating strings instead of tr()."
+					HelpURL="http://doc.qt.nokia.com/latest/uic.html#options"
+					Switch="-tr [value]"
+				/>
+			</Properties>
+		</CustomBuildRule>
+		<CustomBuildRule
+			Name="RCC"
+			DisplayName="Qt Resource Compiler"
+			CommandLine="rcc.exe [AllOptions] [AdditionalOptions] [Inputs]"
+			Outputs="[$OutputFile]"
+			AdditionalDependencies="rcc.exe;[$AdditionalDependences]"
+			FileExtensions="*.qrc"
+			ExecutionDescription="Rcc&apos;ing $(InputFileName)..."
+			>
+			<Properties>
+				<StringProperty
+					Name="OutputFile"
+					DisplayName="Output file"
+					Category="Output"
+					Description="Write output to file rather than to stdout."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-o [value]"
+					DefaultValue="qrc_$(InputName).cpp"
+				/>
+				<BooleanProperty
+					Name="Binary"
+					DisplayName="Binary"
+					Category="Output"
+					Description="Output a binary file for use as a dynamic resource."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-binary"
+				/>
+				<StringProperty
+					Name="AdditionalDependences"
+					DisplayName="Additional Dependences"
+					PropertyPageName="Input"
+					Description="Specify here additional input files (such images for example) for building resources"
+					Delimited="true"
+					Delimiters=";,"
+					Inheritable="true"
+				/>
+				<StringProperty
+					Name="PathPrefix"
+					DisplayName="Path prefix"
+					PropertyPageName="Input"
+					Category="Paths"
+					Description="Prefix the resource access path with path. The default is no prefix."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-root [value]"
+				/>
+				<BooleanProperty
+					Name="NoCompress"
+					DisplayName="Disable compression"
+					PropertyPageName="Code Generation"
+					Category="Compression"
+					Description="Disable compression."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-no-compress"
+					DefaultValue="true"
+				/>
+				<IntegerProperty
+					Name="Compress"
+					DisplayName="Compression level"
+					PropertyPageName="Code Generation"
+					Category="Compression"
+					Description="Compress input files to the given compression level, which is an integer in the range 1 to 9. Level 1 does the least compression but is fastest. Level 9 does the most compression but is slowest. To turn off compression, use -no-compress. The default value for level is -1, which means use zlib&apos;s default compression level."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-compress [value]"
+					DefaultValue="-1"
+				/>
+				<IntegerProperty
+					Name="Threshold"
+					DisplayName="Threshold level"
+					PropertyPageName="Code Generation"
+					Category="Compression"
+					Description="Specifies a threshold level (in bytes) to use when deciding whether to compress a file. If the file is smaller than the threshold level, it is not compressed. The default threshold level is 70 bytes."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-threshold [value]"
+					DefaultValue="70"
+				/>
+				<StringProperty
+					Name="CreateInitFunc"
+					DisplayName="Custom initialization function"
+					PropertyPageName="Code Generation"
+					Description="Create an external initialization function with specified name."
+					HelpURL="http://doc.qt.nokia.com/latest/rcc.html"
+					Switch="-name [value]"
+					DefaultValue="&quot;$(InputName)&quot;"
+				/>
+			</Properties>
+		</CustomBuildRule>
+	</Rules>
+</VisualStudioToolFile>
