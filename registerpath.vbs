@@ -15,12 +15,13 @@ wsh.RegWrite BNX_ROOT +PDDIR,""
 wsh.RegWrite BNX_ROOT64 +PDDIR,""
 
 wsh.RegWrite BNX_ROOT +PDDIR+"VisualStudio\",""
-wsh.RegWrite BNX_ROOT +PDDIR+"MicrosoftSDKs\",""
-wsh.RegWrite BNX_ROOT +PDDIR+"Framework\",""
+wsh.RegWrite BNX_ROOT +PDDIR+"Microsoft SDKs\",""
+wsh.RegWrite BNX_ROOT +PDDIR+"NETFramework\",""
 wsh.RegWrite BNX_ROOT +PDDIR+"FrameworkSDKs\",""
+
 wsh.RegWrite BNX_ROOT64 +PDDIR+"VisualStudio\",""
-wsh.RegWrite BNX_ROOT64 +PDDIR+"MicrosoftSDKs\",""
-wsh.RegWrite BNX_ROOT64 +PDDIR+"Framework\",""
+wsh.RegWrite BNX_ROOT64 +PDDIR+"Microsoft SDKs\",""
+wsh.RegWrite BNX_ROOT64 +PDDIR+"NETFramework\",""
 wsh.RegWrite BNX_ROOT64 +PDDIR+"FrameworkSDKs\",""
 
 wsh.RegWrite BNX_ROOT +PDDIR+"VisualStudio\9.0\",""
@@ -30,13 +31,23 @@ wsh.RegWrite BNX_ROOT64 +PDDIR+"VisualStudio\9.0\VSProductDir","D:\msvc\visualst
 wsh.RegWrite BNX_ROOT +PDDIR+"VisualStudio\9.0\VCProductDir","D:\msvc\visualstudio\msvs9.0\VC\","REG_SZ"
 wsh.RegWrite BNX_ROOT64 +PDDIR+"VisualStudio\9.0\VCProductDir","D:\msvc\visualstudio\msvs9.0\VC\","REG_SZ"
 
-wsh.RegWrite BNX_ROOT +PDDIR+"MicrosoftSDKs\VS90","D:\msvc\visualstudio\sdks\v6.0A\","REG_SZ"
-wsh.RegWrite BNX_ROOT64 +PDDIR+"MicrosoftSDKs\VS90","D:\msvc\visualstudio\sdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT +PDDIR+"Microsoft SDKs\VS90","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT64 +PDDIR+"Microsoft SDKs\VS90","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
 
-wsh.RegWrite BNX_ROOT +PDDIR+"Framework\VS90","D:\msvc\visualstudio\framework\v6.0A\","REG_SZ"
-wsh.RegWrite BNX_ROOT64 +PDDIR+"Framework\VS90","D:\msvc\visualstudio\framework\v6.0A\","REG_SZ"
-wsh.RegWrite BNX_ROOT +PDDIR+"FrameworkSDKs\VS90","D:\msvc\visualstudio\frameworksdks\v6.0A\","REG_SZ"
-wsh.RegWrite BNX_ROOT64 +PDDIR+"FrameworkSDKs\VS90","D:\msvc\visualstudio\frameworksdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT +PDDIR+"Microsoft SDKs\Windows\",""
+wsh.RegWrite BNX_ROOT +PDDIR+"Microsoft SDKs\Windows\v6.0A\",""
+wsh.RegWrite BNX_ROOT +PDDIR+"Microsoft SDKs\Windows\v6.0A\InstallationFolder","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT64 +PDDIR+"Microsoft SDKs\Windows\",""
+wsh.RegWrite BNX_ROOT64 +PDDIR+"Microsoft SDKs\Windows\v6.0A\",""
+wsh.RegWrite BNX_ROOT64 +PDDIR+"Microsoft SDKs\Windows\v6.0A\InstallationFolder","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
+
+wsh.RegWrite BNX_ROOT +PDDIR+"NETFramework\InstallRoot","","REG_SZ"
+wsh.RegWrite BNX_ROOT64 +PDDIR+"NETFramework\InstallRoot","","REG_SZ"
+
+wsh.RegWrite BNX_ROOT +PDDIR+"NETFramework\VS90","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT64 +PDDIR+"NETFramework\VS90","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT +PDDIR+"FrameworkSDKs\VS90","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
+wsh.RegWrite BNX_ROOT64 +PDDIR+"FrameworkSDKs\VS90","D:\msvc\visualstudio\mssdks\v6.0A\","REG_SZ"
 
 wsh.RegWrite BNX_ROOT +PDDIR+"VisualStudio\8.0\",""
 wsh.RegWrite BNX_ROOT64 +PDDIR+"VisualStudio\8.0\",""
