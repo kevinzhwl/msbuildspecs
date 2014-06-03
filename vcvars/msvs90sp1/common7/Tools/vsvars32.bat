@@ -3,15 +3,10 @@
 @SET FrameworkDir=C:\Windows\Microsoft.NET\Framework
 @SET FrameworkVersion=v2.0.50727
 @SET Framework35Version=v3.5
-
-@call :GetVsInstallDir
-@SET VCINSTALLDIR=
-@SET VCINSTALLDIR=%VSINSTALLDIR%VC
-
 @if "%VSINSTALLDIR%"=="" goto error_no_VSINSTALLDIR
 @if "%VCINSTALLDIR%"=="" goto error_no_VCINSTALLDIR
 
-@echo Setting environment for using Microsoft Visual Studio 2008 x86 tools by NativeTargets.
+@echo Setting environment for using Microsoft Visual Studio 2008 x86 tools.
 
 @call :GetWindowsSdkDir
 
@@ -25,12 +20,12 @@
 @rem
 @rem Root of Visual Studio IDE installed files.
 @rem
-@set DevEnvDir=%VSINSTALLDIR%Common7\IDE
+@set DevEnvDir=C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE
 
-@set PATH=%VSINSTALLDIR%Common7\IDE;%VCINSTALLDIR%\BIN;%VSINSTALLDIR%\Common7\Tools;%FrameworkDir%\v3.5;%FrameworkDir%\v2.0.50727;%VCINSTALLDIR%\VCPackages;%PATH%
-@set INCLUDE=%VCINSTALLDIR%\ATLMFC\INCLUDE;%VCINSTALLDIR%\INCLUDE;%INCLUDE%
-@set LIB=%VCINSTALLDIR%\ATLMFC\LIB;%VCINSTALLDIR%\LIB;%LIB%
-@set LIBPATH=%FrameworkDir%\v3.5;%FrameworkDir%\v2.0.50727;%VCINSTALLDIR%\ATLMFC\LIB;%VCINSTALLDIR%\LIB;%LIBPATH%
+@set PATH=C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE;C:\Program Files\Microsoft Visual Studio 9.0\VC\BIN;C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools;C:\Windows\Microsoft.NET\Framework\v3.5;C:\Windows\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft Visual Studio 9.0\VC\VCPackages;%PATH%
+@set INCLUDE=C:\Program Files\Microsoft Visual Studio 9.0\VC\ATLMFC\INCLUDE;C:\Program Files\Microsoft Visual Studio 9.0\VC\INCLUDE;%INCLUDE%
+@set LIB=C:\Program Files\Microsoft Visual Studio 9.0\VC\ATLMFC\LIB;C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB;%LIB%
+@set LIBPATH=C:\Windows\Microsoft.NET\Framework\v3.5;C:\Windows\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft Visual Studio 9.0\VC\ATLMFC\LIB;C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB;%LIBPATH%
 
 @goto end
 
@@ -47,22 +42,6 @@
 	)
 )
 @if "%WindowsSdkDir%"=="" exit /B 1
-@exit /B 0
-
-:GetVsInstallDir
-@call :GetVsInstallDirHelper HKLM > nul 2>&1
-@if errorlevel 1 call :GetVsInstallDirHelper HKCU > nul 2>&1
-@if errorlevel 1 echo VsInstallDir not found
-@exit /B 0
-
-:GetVsInstallDirHelper
-@SET VSINSTALLDIR=
-@for /F "tokens=1,2*" %%i in ('reg query "%1\SOFTWARE\NativeTargets\VisualStudio\9.0\Setup\VS" /v "ProductDir"') DO (
-	if "%%i"=="ProductDir" (
-		SET "VSINSTALLDIR=%%k"
-	)
-)
-@if "%VSINSTALLDIR%"=="" exit /B 1
 @exit /B 0
 
 :error_no_VSINSTALLDIR

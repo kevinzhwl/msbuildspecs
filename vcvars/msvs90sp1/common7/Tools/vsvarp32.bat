@@ -11,14 +11,14 @@
 @if "%VSINSTALLDIR%"=="" goto error_no_VSINSTALLDIR
 @if "%VCINSTALLDIR%"=="" goto error_no_VCINSTALLDIR
 
-@echo Setting environment for using Microsoft Visual Studio 2008 Beta2 x64 cross tools by NativeTargets.
+@echo Setting environment for using Microsoft Visual Studio 2008 x86 tools.
 
 @call :GetWindowsSdkDir
 
 @if not "%WindowsSdkDir%" == "" (
 	set "PATH=%WindowsSdkDir%bin;%PATH%"
 	set "INCLUDE=%WindowsSdkDir%include;%INCLUDE%"
-	set "LIB=%WindowsSdkDir%lib\x64;%LIB%"
+	set "LIB=%WindowsSdkDir%lib;%LIB%"
 )
 
 
@@ -27,22 +27,21 @@
 @rem
 @set DevEnvDir=%VSINSTALLDIR%Common7\IDE
 
-@set PATH=%VSINSTALLDIR%Common7\IDE;%VCINSTALLDIR%\BIN\x86_amd64;%VCINSTALLDIR%\BIN;%VSINSTALLDIR%Common7\Tools;%FrameworkDir%\v3.5;%FrameworkDir%\v2.0.50727;%VCINSTALLDIR%\VCPackages;%PATH%
+@set PATH=%VSINSTALLDIR%Common7\IDE;%VCINSTALLDIR%\BIN;%VSINSTALLDIR%\Common7\Tools;%FrameworkDir%\v3.5;%FrameworkDir%\v2.0.50727;%VCINSTALLDIR%\VCPackages;%PATH%
 @set INCLUDE=%VCINSTALLDIR%\ATLMFC\INCLUDE;%VCINSTALLDIR%\INCLUDE;%INCLUDE%
-@set LIB=%VCINSTALLDIR%\ATLMFC\LIB\amd64;%VCINSTALLDIR%\LIB\amd64;%LIB%
-
-@set LIBPATH=%FrameworkDir%\v3.5;%FrameworkDir%\v2.0.50727;%VCINSTALLDIR%\ATLMFC\LIB\amd64;%VCINSTALLDIR%\LIB\amd64;%LIBPATH%
+@set LIB=%VCINSTALLDIR%\ATLMFC\LIB;%VCINSTALLDIR%\LIB;%LIB%
+@set LIBPATH=%FrameworkDir%\v3.5;%FrameworkDir%\v2.0.50727;%VCINSTALLDIR%\ATLMFC\LIB;%VCINSTALLDIR%\LIB;%LIBPATH%
 
 @goto end
 
 :GetWindowsSdkDir
 @call :GetWindowsSdkDirHelper HKLM > nul 2>&1
 @if errorlevel 1 call :GetWindowsSdkDirHelper HKCU > nul 2>&1
-@if errorlevel 1 echo WindowsSdkDir not found
+@if errorlevel 1 set WindowsSdkDir=%VCINSTALLDIR%\PlatformSDK\
 @exit /B 0
 
 :GetWindowsSdkDirHelper
-@for /F "tokens=1,2*" %%i in ('reg query "%1\SOFTWARE\Microsoft\Microsoft SDKs\Windows" /v "CurrentInstallFolder"') DO (
+@for /F "tokens=1,2*" %%i in ('reg query "%1\SOFTWARE\NativeTargets\Microsoft SDKs\Windows" /v "CurrentInstallFolder"') DO (
 	if "%%i"=="CurrentInstallFolder" (
 		SET "WindowsSdkDir=%%k"
 	)

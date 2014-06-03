@@ -1,12 +1,18 @@
+
 @SET VSINSTALLDIR=C:\Program Files\Microsoft Visual Studio 9.0
 @SET VCINSTALLDIR=C:\Program Files\Microsoft Visual Studio 9.0\VC
 @SET FrameworkDir=C:\Windows\Microsoft.NET\Framework64
 @SET FrameworkVersion=v2.0.50727
 @SET Framework35Version=v3.5
+
+@call :GetVsInstallDir
+@SET VCINSTALLDIR=
+@SET VCINSTALLDIR=%VSINSTALLDIR%VC
+
 @if "%VSINSTALLDIR%"=="" goto error_no_VSINSTALLDIR
 @if "%VCINSTALLDIR%"=="" goto error_no_VCINSTALLDIR
 
-@echo Setting environment for using Microsoft Visual Studio 2008 Beta2 x64 tools.
+@echo Setting environment for using Microsoft Visual Studio 2008 Beta2 x64 tools by NativeTargets.
 
 @call :GetWindowsSdkDir
 
@@ -38,6 +44,22 @@
 	)
 )
 @if "%WindowsSdkDir%"=="" exit /B 1
+@exit /B 0
+
+:GetVsInstallDir
+@call :GetVsInstallDirHelper HKLM > nul 2>&1
+@if errorlevel 1 call :GetVsInstallDirHelper HKCU > nul 2>&1
+@if errorlevel 1 echo VsInstallDir not found
+@exit /B 0
+
+:GetVsInstallDirHelper
+@SET VSINSTALLDIR=
+@for /F "tokens=1,2*" %%i in ('reg query "%1\SOFTWARE\NativeTargets\VisualStudio\9.0\Setup\VS" /v "ProductDir"') DO (
+	if "%%i"=="ProductDir" (
+		SET "VSINSTALLDIR=%%k"
+	)
+)
+@if "%VSINSTALLDIR%"=="" exit /B 1
 @exit /B 0
 
 :error_no_VSINSTALLDIR
